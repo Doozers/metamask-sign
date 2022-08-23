@@ -3,10 +3,8 @@ import hexer from 'browser-string-hexer';
 import {sha256} from "js-sha256";
 
 const React = require('react');
-const utf8 = require('utf8');
 
 export default function FormSign({fixed}) {
-    const [ethereum, setEthereum] = React.useState(null);
     const [message, setMessage] = useState('');
     const [hash, setHash] = useState('');
     const [signature, setSignature] = useState('');
@@ -23,11 +21,11 @@ export default function FormSign({fixed}) {
         }
         const ethereum = window.ethereum;
 
-        console.log('sign ' + message);
+        console.log('sign ' + hash);
         // @ts-ignore
         const accounts = await ethereum.request({method: 'eth_requestAccounts'})
         console.log(accounts)
-        let msgParam = hexer(message);
+        let msgParam = hexer(hash);
         console.log(msgParam)
         let param = [msgParam, accounts[0]];
         console.log(param);
@@ -58,7 +56,7 @@ export default function FormSign({fixed}) {
             <div className="flex items-center border-b border-teal-500 py-2">
                 <input
                     className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                    type="text" placeholder="Jane Doe" aria-label="Full name" value={message} onChange={handleChangeMessage}/>
+                    type="text" placeholder="to hash" aria-label="Full name" value={message} onChange={handleChangeMessage}/>
                 <button
                     className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
                     type="button" onClick={hash256}>
@@ -70,7 +68,7 @@ export default function FormSign({fixed}) {
             <div className="flex items-center border-b border-teal-500 py-2">
                 <input
                     className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
-                    type="text" placeholder="Jane Doe" aria-label="Full name" value={hash} onChange={handleChangeHash}/>
+                    type="text" placeholder="to sign" aria-label="Full name" value={hash} onChange={handleChangeHash}/>
                 <button
                     className="flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded"
                     type="button" onClick={sign}>
