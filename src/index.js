@@ -3,7 +3,6 @@ import BaseApp from './pages/App.tsx';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Sign from "./pages/Sign.tsx";
-import Display from "./components/display";
 import SigDisplay from "./pages/defaultcb";
 
 const React = require('react');

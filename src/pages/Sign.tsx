@@ -2,11 +2,12 @@ import React from "react";
 import "../index.css";
 import Navbar from '../components/navbar';
 import {useEffect} from "react";
-import {useNavigate} from 'react-router-dom';
 import {hash256, sign} from "../utils/utils";
 
+// env it
+const URL = 'http://localhost:3000';
+
 function Sign() {
-    const navigate = useNavigate();
 
     async function signNonce(nonce: string): Promise<string> {
         const hash = hash256(nonce);
@@ -16,7 +17,7 @@ function Sign() {
     useEffect(() => {
         const signIt = async (nonce: string) => {
             await signNonce(nonce).then((result: string) => {
-                navigate("../" + callbackURL + '?sig=' + result);
+                window.location.replace(callbackURL + '?sig=' + result);
             }).catch(err => {
                 console.error(err);
             });
@@ -31,11 +32,7 @@ function Sign() {
         }
 
         if (callbackURL === null) {
-            callbackURL = "default/";
-        }
-
-        if (callbackURL[callbackURL.length - 1] !== '/') {
-            callbackURL += '/';
+            callbackURL = `${URL}/default`;
         }
 
         signIt(nonce).then(() => console.log("redirected"));
