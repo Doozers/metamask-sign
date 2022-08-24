@@ -1,10 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
 import './index.css';
-import BaseApp from './pages/App';
+import BaseApp from './pages/App.tsx';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Sign from "./pages/Sign";
+import Sign from "./pages/Sign.tsx";
+import Display from "./components/display";
+import SigDisplay from "./pages/defaultcb";
+
+const React = require('react');
+const ReactDOM = require('react-dom/client');
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,6 +15,7 @@ root.render(
         <Routes>
             <Route path="/" element={<BaseApp/>}/>
             <Route path="/sign" element={<Sign/>}/>
+            <Route path="/default" element={<SigDisplay/>}/>
         </Routes>
     </BrowserRouter>
 );

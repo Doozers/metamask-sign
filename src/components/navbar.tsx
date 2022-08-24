@@ -1,7 +1,6 @@
 const React = require('react');
 
-export default function Navbar({ fixed }) {
-    // @ts-ignore
+export default function Navbar() {
     return (
         <>
             <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 bg-blue-500 mb-3">

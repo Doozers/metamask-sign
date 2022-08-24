@@ -1,6 +1,7 @@
 import "../index.css";
-import Navbar from "../components/navbar.tsx";
-import FormSign from "../components/form.js";
+import React from "react";
+import Navbar from "../components/navbar";
+import FormSign from "../components/form";
 
 function BaseApp() {
     return (
