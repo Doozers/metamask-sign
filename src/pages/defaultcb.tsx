@@ -13,7 +13,7 @@ function SigDisplay() {
             return;
         }
         setSig(sigParam);
-    });
+    }, []);
 
     return (
         <div className="App">
